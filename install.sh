@@ -185,6 +185,13 @@ echo -e '\nInstalling the 32Bit Libraries for the system'
                 echo 'The package ia32-libs is needed to continue...'
                     EXITERROR
             fi
+        elif [ "`echo yes|awk \"{if ($UBUNTUCODEOS >= 13.10) print $1}\"`" == "yes" ]; then
+            su -c 'apt-get -y install lib32z1 lib32ncurses5 lib32bz2-1.0' >> /tmp/canon-printing_Install.log 2>&1
+            if [ $? -ne 0 ] ; then
+                echo -e '\nI am sorry though you are using a x64 system and the apt-get package management system failed to install ia32-libs.'  
+                echo 'The package ia32-libs is needed to continue...'
+                    EXITERROR
+            fi
         fi
                 if [ -e /lib32/libpng12.so.[0-9].* ]; then
                         echo 'Creating a Symbolic Link to libpng12 /lib32/libpng.so.3'

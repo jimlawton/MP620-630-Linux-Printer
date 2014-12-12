@@ -1,1 +1,5 @@
 bjnp/.deps
+bjnp/Makefile
+bjnp/bjnp
+bjnp/config.log
+bjnp/config.status
